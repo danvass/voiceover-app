@@ -15,7 +15,7 @@
       <div class="flex items-center gap-1 mt-2 mb-2">
         <UInput type="password" v-model="openaiApiKey" :disabled="isRecording" placeholder="OpenAI API Key" />
         <UInput type="password" v-model="elevenlabsApiKey" :disabled="isRecording" placeholder="ElevenLabs API Key" />
-        <UInput type="text" v-model="voiceId" :disabled="isRecording" placeholder="ElevenLabs Voice ID (defaults to Adam)" />
+        <UInput type="text" v-model="voiceId" :disabled="isRecording" placeholder="ElevenLabs Voice ID (defaults to Adam, clone for a custom one)" />
       </div>
 
       Prompt:
