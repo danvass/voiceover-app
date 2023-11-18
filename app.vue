@@ -8,7 +8,7 @@
         </div>
       </template>
 
-      <div>Generate a real-time voiceover from your webcam. All you need is an <UTooltip text="You can get it from https://platform.openai.com/api-keys"> OpenAI API Key</UTooltip>, <UTooltip text="You can get it from your profile on ElevenLabs.">ElevenLabs API Key</UTooltip> and <UTooltip text="You can get it from the Get Voices API endpoint from Eleven Labs.">Voice ID</UTooltip>.</div>
+      <div>Generate a real-time voiceover from your webcam. All you need is an <UTooltip text="You can get it from https://platform.openai.com/api-keys"> OpenAI API Key</UTooltip>, <UTooltip text="You can get it from your profile on ElevenLabs.">ElevenLabs API Key</UTooltip> and <UTooltip text="You can get it from the Get Voices API endpoint from Eleven Labs.">Voice ID</UTooltip>. Inspired by <ULink to="https://x.com/charliebholtz/status/1724815159590293764?s=20">this demo</ULink>.</div>
 
       Config:
 
