@@ -120,7 +120,7 @@ const captureFrame = async (videoElement) => {
   context.drawImage(videoElement, 0, 0, canvas.width, canvas.height);
 
   // Resize the captured frame to a maximum width of 400px
-  const maxWidth = 400;
+  const maxWidth = 250;
   const scaleFactor = maxWidth / canvas.width;
   const resizedWidth = maxWidth;
   const resizedHeight = canvas.height * scaleFactor;
