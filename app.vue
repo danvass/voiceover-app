@@ -8,12 +8,19 @@
         </div>
       </template>
 
-      Generate a real-time voiceover from your webcam. All you need is an OpenAI and ElevenLabs API Key.
+      <div>Generate a real-time voiceover from your webcam. All you need is an <UTooltip text="You can get it from https://platform.openai.com/api-keys"> OpenAI API Key</UTooltip>, <UTooltip text="You can get it from your profile on ElevenLabs.">ElevenLabs API Key</UTooltip> and <UTooltip text="You can get it from the Get Voices API endpoint from Eleven Labs.">Voice ID</UTooltip>.</div>
 
-      <div class="flex items-center gap-1 mt-2 mb-3">
-        API Keys: 
+      Config:
+
+      <div class="flex items-center gap-1 mt-2 mb-2">
         <UInput type="password" v-model="openaiApiKey" :disabled="isRecording" placeholder="OpenAI API Key" />
         <UInput type="password" v-model="elevenlabsApiKey" :disabled="isRecording" placeholder="ElevenLabs API Key" />
+        <UInput type="text" v-model="voiceId" :disabled="isRecording" placeholder="ElevenLabs Voice ID" />
+      </div>
+
+      Prompt:
+      <div class="mt-2 mb-3">
+        <UTextarea v-model="systemPrompt"></UTextarea>
       </div>
 
       <UButton @click="toggle">{{ isRecording ? "Stop" : "Capture" }}</UButton>
@@ -53,8 +60,9 @@ let openai;
 
 const videoRef = ref(null);
 const audioRef = ref(null);
-let openaiApiKey = ref('');
-let elevenlabsApiKey = ref('');
+let voiceId = ref('');
+let systemPrompt = ref(`You are Sir David Attenborough. Narrate the picture of the human as if it is a nature documentary.
+Make it snarky and funny. Don't repeat yourself. Make it short. If I do anything remotely interesting, make a big deal about it!`);
 let isRecording = ref(false);
 
 let frame = ref(null);
@@ -148,8 +156,7 @@ const captureFrame = async (videoElement) => {
     messages: [
       {
         role: "system",
-        content: `You are Sir David Attenborough. Narrate the picture of the human as if it is a nature documentary.
-Make it snarky and funny. Don't repeat yourself. Make it short. If I do anything remotely interesting, make a big deal about it!`,
+        content: systemPrompt.value
       },
       {
         role: "user",
@@ -226,7 +233,7 @@ mediaSource.addEventListener('sourceopen', () => {
       }
 
       // Fetch a chunk of audio data
-      const response = await fetch('https://api.elevenlabs.io/v1/text-to-speech/hfvKg8HifsF5B2g0e0QB/stream?optimize_streaming_latency=0', {
+      const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId.value}/stream?optimize_streaming_latency=0`, {
         method: 'POST',
         headers: {
           Accept: 'audio/mpeg',
