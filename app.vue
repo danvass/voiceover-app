@@ -4,7 +4,7 @@
     <UCard class="mt-10 mb-4">
       <template #header>
         <div class="flex justify-between">
-          <h1>Real-time voicover</h1>
+          <h1>Real-time voiceover</h1>
         </div>
       </template>
 
