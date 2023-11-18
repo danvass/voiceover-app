@@ -15,7 +15,7 @@
       <div class="flex items-center gap-1 mt-2 mb-2">
         <UInput type="password" v-model="openaiApiKey" :disabled="isRecording" placeholder="OpenAI API Key" />
         <UInput type="password" v-model="elevenlabsApiKey" :disabled="isRecording" placeholder="ElevenLabs API Key" />
-        <UInput type="text" v-model="voiceId" :disabled="isRecording" placeholder="ElevenLabs Voice ID" />
+        <UInput type="text" v-model="voiceId" :disabled="isRecording" placeholder="ElevenLabs Voice ID (defaults to Adam)" />
       </div>
 
       Prompt:
@@ -233,7 +233,7 @@ mediaSource.addEventListener('sourceopen', () => {
       }
 
       // Fetch a chunk of audio data
-      const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId.value}/stream?optimize_streaming_latency=0`, {
+      const response = await fetch(`https://api.elevenlabs.io/v1/text-to-speech/${voiceId.value || 'pNInz6obpgDQGcFmaJgB'}/stream?optimize_streaming_latency=0`, {
         method: 'POST',
         headers: {
           Accept: 'audio/mpeg',
