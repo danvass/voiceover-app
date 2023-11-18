@@ -38,6 +38,9 @@
       </div>
     </div>
 
+    <div class="mt-12 text-gray-600">
+      This web app only communicates with OpenAI and ElevenLabs. No API keys are stored and will be lost upon refresh.
+    </div>
   </UContainer>
 </template>
 
