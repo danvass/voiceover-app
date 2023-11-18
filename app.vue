@@ -21,11 +21,11 @@
     </UCard>
 
     <div class="flex flex-wrap">
-      <div class="w-full md:w-2/3">
+      <div class="w-full md:w-3/5">
         <h2 class="text-xl font-bold mb-4">Live video</h2>
-        <video ref="videoRef" class="w-full" autoplay></video>
+        <video ref="videoRef" class="w-full border rounded-lg" autoplay></video>
       </div>
-      <div class="w-full md:w-1/3">
+      <div class="w-full md:w-2/5">
         <div class="pb-4 px-4">
           <!-- Content for the right column -->
           <h2 class="text-xl font-bold mb-4">Captured scene</h2>
